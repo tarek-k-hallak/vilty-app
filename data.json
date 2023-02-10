@@ -1,0 +1,98 @@
+[
+    {
+        "name": "React",
+        "auther": "Margit",
+        "tags": [
+            "back-end"
+        ],
+        "price": 54,
+        "isPublished": false
+    },
+    {
+        "name": "Laravel",
+        "auther": "Drake",
+        "tags": [
+            "front-end"
+        ],
+        "date": "02/04/1900",
+        "price": 90,
+        "isPublished": true
+    },
+    {
+        "name": "next",
+        "auther": "Arnuad",
+        "tags": [
+            "full-stack"
+        ],
+        "date": "02/04/1900",
+        "price": 3,
+        "isPublished": true
+    },
+    {
+        "name": "Node",
+        "auther": "Kessiah",
+        "tags": [
+            "back-end"
+        ],
+        "date": "02/04/1900",
+        "price": 86,
+        "isPublished": true
+    },
+    {
+        "name": "React",
+        "auther": "Gaylene",
+        "tags": [
+            "full-stack"
+        ],
+        "price": 37,
+        "isPublished": false
+    },
+    {
+        "name": "React",
+        "auther": "Tessa",
+        "tags": [
+            "back-end"
+        ],
+        "date": "02/04/1900",
+        "price": 44,
+        "isPublished": true
+    },
+    {
+        "name": "Laravel",
+        "auther": "Pete",
+        "tags": [
+            "full-stack"
+        ],
+        "price": 35,
+        "isPublished": false
+    },
+    {
+        "name": "Laravel",
+        "auther": "Berti",
+        "tags": [
+            "full-stack"
+        ],
+        "date": "02/04/1900",
+        "price": 39,
+        "isPublished": false
+    },
+    {
+        "name": "Vue",
+        "auther": "Kate",
+        "tags": [
+            "front-end"
+        ],
+        "date": "02/04/1900",
+        "price": 53,
+        "isPublished": true
+    },
+    {
+        "name": "next",
+        "auther": "Marty",
+        "tags": [
+            "back-end"
+        ],
+        "price": 66,
+        "isPublished": false
+    }
+]
