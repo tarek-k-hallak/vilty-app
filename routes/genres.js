@@ -12,8 +12,8 @@ router.post('/', async (req, res) => {
     if (error) return res.status(400).send(error.details[0].message)
 
     try {
-        const result = await genre.save();
-        res.send(result);
+        await genre.save();
+        res.send(genre);
     }
     catch (err) {
         res.send(err.message);

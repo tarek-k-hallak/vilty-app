@@ -1,8 +1,11 @@
 const express = require('express')
+// var Fawn = require("fawn");
+// Fawn.init("mongodb://127.0.0.1:27017/Vitly", "rentals");
 
 const { Validate, Rental } = require('../module/rental')
 const { Customer } = require('../module/customer')
 const { Movie } = require('../module/movie')
+const { default: mongoose } = require('mongoose')
 
 const router = express.Router()
 router.post('/', async (req, res) => {
@@ -33,9 +36,10 @@ router.post('/', async (req, res) => {
     })
 
     try {
-        // rental = await rental.save();
-        // movie.nubmerInStock--;
-        // movie.save();
+        rental = await rental.save();
+        movie.nubmerInStock--;
+        movie.save();
+
         // new Fawn.Task()
         //     .save('rentals', rental)
         //     .update('movies', { _id: movie._id }, { $inc: { nubmerInStock: -1 } })
@@ -43,7 +47,7 @@ router.post('/', async (req, res) => {
         res.send(rental);
     }
     catch (ex) {
-        res.status(500).send('Somthing went wrong from the server part.');
+        res.status(500).send(ex);
     }
 })
 
