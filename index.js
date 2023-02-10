@@ -4,15 +4,17 @@ const mongoose = require('mongoose')
 const app = express();
 app.use(express.json());
 
-const customer = require('./routes/customers')
-const genre = require('./routes/genres')
-const movie = require('./routes/movies')
-const rental = require('./routes/rentals')
+const customers = require('./routes/customers')
+const genres = require('./routes/genres')
+const movies = require('./routes/movies')
+const rentals = require('./routes/rentals')
+const users = require('./routes/users')
 
-app.use('/api/customer', customer)
-app.use('/api/genre', genre)
-app.use('/api/movie', movie)
-app.use('/api/rental', rental)
+app.use('/api/customers', customers)
+app.use('/api/genres', genres)
+app.use('/api/movies', movies)
+app.use('/api/rentals', rentals)
+app.use('/api/users', users)
 
 function ConnectToMongoDB() {
     mongoose.connect('mongodb://127.0.0.1:27017/Vitly')
