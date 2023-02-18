@@ -1,15 +1,16 @@
+const auth = require('../middleware/auth')
 const express = require('express')
 const router = express.Router()
 
 const { Validate, Genre } = require('../module/genre')
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
+    const { error } = Validate(req.body)
+    if (error) return res.status(400).send(error.details[0].message)
+
     const genre = new Genre({
         name: req.body.name,
     })
-
-    const { error } = Validate(req.body)
-    if (error) return res.status(400).send(error.details[0].message)
 
     try {
         await genre.save();
@@ -30,7 +31,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
     try {
         const result = await Genre.deleteOne({ _id: req.params.id })
         if (result.deletedCount == 0) return res.status(404).send("The Course with the given Id was not found!")

@@ -1,0 +1,6 @@
+{
+    "type": "Development",
+    "mail": {
+        "host": "deve-mail-server"
+    }
+}

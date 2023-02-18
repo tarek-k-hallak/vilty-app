@@ -4,7 +4,20 @@ const router = express.Router()
 const { Validate, Movie } = require('../module/movie')
 const { Genre } = require('../module/genre')
 
-router.post('/', async (req, res) => {
+const auth = require('../middleware/auth')
+const admin = require('../middleware/admin')
+
+router.get('/', async (req, res) => {
+    try {
+        const movie = await Movie.find()
+        res.send(movie)
+    }
+    catch (err) {
+        console.error(err.message)
+    }
+})
+
+router.post('/', auth, async (req, res) => {
     const { error } = Validate(req.body)
     if (error) return res.status(400).send(error.details[0].message)
 
@@ -23,24 +36,14 @@ router.post('/', async (req, res) => {
 
     try {
         await movie.save();
-        res.send(movie);
+        res.send({ body: req.body, user: req.user });
     }
     catch (err) {
         res.send(err.message);
     }
 })
 
-router.get('/', async (req, res) => {
-    try {
-        const movie = await Movie.find()
-        res.send(movie)
-    }
-    catch (err) {
-        console.error(err.message)
-    }
-})
-
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', [auth, admin], async (req, res) => {
     try {
         const result = await Movie.deleteOne({ _id: req.params.id })
         if (result.deletedCount == 0) return res.status(404).send("The Course with the given Id was not found!")
@@ -51,7 +54,7 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', [auth, admin], async (req, res) => {
     const { error } = Validate(req.body)
     if (error) return res.status(400).send(error.details[0].message)
 

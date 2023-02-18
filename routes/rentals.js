@@ -2,10 +2,9 @@ const express = require('express')
 // var Fawn = require("fawn");
 // Fawn.init("mongodb://127.0.0.1:27017/Vitly", "rentals");
 
-const { Validate, Rental } = require('../module/rental')
+const { Rental, Validate } = require('../module/rental')
 const { Customer } = require('../module/customer')
 const { Movie } = require('../module/movie')
-const { default: mongoose } = require('mongoose')
 
 const router = express.Router()
 router.post('/', async (req, res) => {
